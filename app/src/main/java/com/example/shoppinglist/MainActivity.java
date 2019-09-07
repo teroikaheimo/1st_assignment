@@ -25,14 +25,12 @@ public class MainActivity extends AppCompatActivity {
         this.button_save = findViewById(R.id.button_save);
         this.button_done = findViewById(R.id.button_done);
         this.textViewContent = findViewById(R.id.editText);
-
         this.button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveText(textViewContent);
             }
         });
-
         this.button_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Add the item to the list IF the length is correct.
     private void saveText(EditText x) {
         String item = x.getText().toString();
         if (item.length() > 15) {
@@ -54,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Opens a new Activity to show all the items the user has listed.
     public void showShoppingList(View view) {
         Intent intent = new Intent(this, ShowList.class);
         intent.putExtra(EXTRA_MESSAGE, shoppingList);

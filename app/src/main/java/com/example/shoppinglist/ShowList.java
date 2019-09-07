@@ -1,11 +1,13 @@
 package com.example.shoppinglist;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class ShowList extends AppCompatActivity {
     private ArrayList<String> shoppingListItems;
     private Button backButton;
     private TextView shoppingList;
+    private AlertDialog.Builder alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +34,31 @@ public class ShowList extends AppCompatActivity {
         this.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                //onBackPressed();
+                alertDialog.show();
             }
         });
 
+        // AlertDialog
+        alertDialog = new AlertDialog.Builder(this)
+                .setTitle("Go back")
+                .setMessage("Do you really want to go back?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert);
+
     }
 
+    // Convert ArrayList to String and format the output.
     private String shoppingListText(ArrayList<String> x) {
         String listOfItems = "";
         for (String item : x) {
-            listOfItems = listOfItems + item + "\n\r";
+            listOfItems = listOfItems + " - " + item + "\n";
         }
         return listOfItems;
     }
