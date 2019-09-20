@@ -13,27 +13,3 @@ When Done-button is pressed, the program opens a new Activity called ShowList. S
 When user presses the Back-button, an AlertDialog is displayed to confirm his decision to finish (close) this activity and return to the previous activity (ShoppingList).
 
 Pressing the positive button (yes, ok, whatever) closes the AlertDialog and closes the current activity returning to the original ShoppingList-activity.
-
-Functions and classes important in this assignment:
-
-TextView - View component to display text.
-
-EditText - View component to display and edit text.
-
-Toast - A small popup text to show on screen.
-
-AlertDialog.Builder - A larger popup with more complex layout. AlertDialogs are constructed in Builder-pattern.
-
-Intent - Intents are a way to tell to the OS what to do outside of current activity (i.e. starting new activities: Intent i = new Intent(ClassName.class);
-
-startActivity(Intent i);
-
-finish();
-
-findViewById(R.id.yourComponentId);  - Connect UI components to objects in code.
-
-getApplicationContext();
-
-View.setOnClickListener();
-
-ProTip: In newer API versions when giving the Context in the constructor function of AlertDialog, the correct context to give is this or YourActivity.this. This is a compatibility bug in older user interface-components like AlertDialog.
